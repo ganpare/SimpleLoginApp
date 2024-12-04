@@ -42,7 +42,11 @@ export function setupAuth(app: Express) {
     secret: process.env.REPL_ID || "porygon-supremacy",
     resave: false,
     saveUninitialized: false,
-    cookie: {},
+    cookie: {
+      secure: false,  // 開発環境ではfalseに
+      sameSite: 'lax',
+      maxAge: 24 * 60 * 60 * 1000 // 24時間
+    },
     store: new MemoryStore({
       checkPeriod: 86400000, // prune expired entries every 24h
     }),
