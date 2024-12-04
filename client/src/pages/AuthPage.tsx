@@ -44,22 +44,32 @@ export default function AuthPage() {
 
   const onLogin = async (values: { username: string; password: string }) => {
     const result = await login(values);
-    if (!result.ok) {
+    if (result.ok) {
+      toast({
+        title: "ログイン成功",
+        description: "正常にログインできました。"
+      });
+    } else {
       toast({
         variant: "destructive",
-        title: "Login failed",
-        description: result.message,
+        title: "ログイン失敗",
+        description: result.message
       });
     }
   };
 
   const onRegister = async (values: { username: string; password: string }) => {
     const result = await register(values);
-    if (!result.ok) {
+    if (result.ok) {
+      toast({
+        title: "登録成功",
+        description: "アカウントが作成されました。"
+      });
+    } else {
       toast({
         variant: "destructive",
-        title: "Registration failed",
-        description: result.message,
+        title: "登録失敗",
+        description: result.message
       });
     }
   };
