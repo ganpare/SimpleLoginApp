@@ -12,12 +12,15 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "allowImportingTsExtensions": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node", // "bundler"から"node"に変更
     "baseUrl": ".",
     "types": ["node", "vite/client"],
     "paths": {
       "@/*": ["./client/src/*"],
       "@db/*": ["./db/*"]
-    }
+    },
+    "target": "ES2020", // 追加
+    "resolveJsonModule": true, // 追加
+    "forceConsistentCasingInFileNames": true // 追加
   }
 }
